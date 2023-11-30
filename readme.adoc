@@ -1,30 +1,25 @@
 = Zilsd: Load/Store Pair for RV32 Fast-Track Extension
 
-== License
+The Zilsp extension adds support for loads and stores using aligned register pairs. It is an RV32-only extension, reusing existing RV64 encodings.
 
-This work is licensed under a Creative Commons Attribution 4.0 International License (CC-BY-4.0). For details, see the link:LICENSE[LICENSE] file.
+= License
 
-== Contributors
+This work is licensed under a Creative Commons Attribution 4.0 International License (CC-BY-4.0).
+See the link:LICENSE[LICENSE] file for details.
 
-The list of contributors to this specification is maintained in the link:contributors.adoc[contributors] file.
-
-For guidelines on how to contribute, refer to the link:CONTRIBUTING.md[CONTRIBUTING] file.
-
-== Building the Document
-
-=== Prerequisites
+= Dependencies
 
 To build the document, you'll need the following tools installed on your system:
 
 * Make
-* asciiDoctor-pdf, asciidoctor-bibtex, asciidoctor-diagram and asciidoctor-mathematical
+* asciiDoctor-pdf
 * Docker
 
 === Cloning the Repository
 
 `git clone --recurse-submodules https://github.com/riscv/riscv-zilsd.git`
 
-=== Building the Documentation
+`VERSION`: Represents the version of the specification being built. By default, this is set to 'v0.0.0'. You can change this to a different value, like 'v1.0.0', 'v1.1.0', etc., based on the current version of your specification.
 
 To start the build process, run `cd ./riscv-zilsd && make build`.
 

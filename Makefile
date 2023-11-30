@@ -19,7 +19,7 @@ DOCKER_RUN := docker run --rm -v ${PWD}:/build -w /build \
 riscvintl/riscv-docs-base-container-image:latest
 
 HEADER_SOURCE := header.adoc
-PDF_RESULT := spec-sample.pdf
+PDF_RESULT := riscv-zilsp-$(VERSION).pdf
 
 ASCIIDOCTOR_PDF := asciidoctor-pdf
 OPTIONS := --trace \
@@ -31,9 +31,7 @@ OPTIONS := --trace \
            -a pdf-fontsdir=docs-resources/fonts \
            -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
            --failure-level=ERROR
-REQUIRES := --require=asciidoctor-bibtex \
-            --require=asciidoctor-diagram \
-            --require=asciidoctor-mathematical
+REQUIRES := 
 
 .PHONY: all build clean build-container build-no-container
 
