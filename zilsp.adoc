@@ -14,6 +14,11 @@ The Zilsp extension adds the following RV32-only instructions:
   - LD loads a 64-bit value into registers `rd` and `rd+1`
   - SD stores a 64-bit value from registers `rs2` and `rs2+1`
 
+[NOTE]
+====
+Implementations may need to crack these instructions, and perform to memory operations in sequence. Therefore, implementations are not required to ensure atomicity in loading/storing to/from the individual registers relating to a 64-bit operand.
+====
+
 === Compressed Load/Store pair instructions
 
 If the C extension is present, Zilsp adds the following RV32-only instructions:

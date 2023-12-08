@@ -2,7 +2,7 @@
 :description: Load/Store Pair (LSP) instructions
 :company: RISC-V.org
 :revdate: 12/2023
-:revnumber: 0.8.0-draft
+:revnumber: 0.8.1-draft
 :revremark: This document is in Frozen state. See http://riscv.org/spec-state for details.
 :url-riscv: http://riscv.org
 :doctype: book
