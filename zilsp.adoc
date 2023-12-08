@@ -30,6 +30,7 @@ If the C extension is present, Zilsp adds the following RV32-only instructions:
   - C.SD stores a 64-bit value from registers `rs2'` and `rs2'+1`. It expands to
   `sd rs2', offset(rs1')`.
 
+These instructions are mutually exclusive with Zcf.
 
 === Use of x0 as operand
 
