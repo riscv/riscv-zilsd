@@ -36,7 +36,7 @@ endif::[]
 :footnote:
 :xrefstyle: short
 
-= Load/Store Pair (LSP) instructions (Zilsd)
+= Load/Store Pair for RV32 (Zilsd)
 
 // Preamble
 [WARNING]
