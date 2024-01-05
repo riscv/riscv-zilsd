@@ -1,6 +1,6 @@
 = Zilsd: Load/Store Pair for RV32 Fast-Track Extension
 
-The Zilsp extension adds support for loads and stores using aligned register pairs. It is an RV32-only extension, reusing existing RV64 encodings.
+The Zilsd extension adds support for loads and stores using aligned register pairs. It is an RV32-only extension, reusing existing RV64 encodings.
 
 = License
 

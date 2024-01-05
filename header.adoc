@@ -17,7 +17,7 @@
 // needs to be changed? bug discussion started
 //:WaveDromEditorApp: app/wavedrom-editor.app
 :imagesoutdir: images
-:bibtex-file: zilsp.bib
+:bibtex-file: zilsd.bib
 :bibtex-order: occurrence
 :bibtex-style: ieee
 :icons: font
@@ -36,7 +36,7 @@ endif::[]
 :footnote:
 :xrefstyle: short
 
-= Load/Store Pair (LSP) instructions (Zilsp)
+= Load/Store Pair (LSP) instructions (Zilsd)
 
 // Preamble
 [WARNING]
@@ -62,10 +62,10 @@ Christian Herber, Torbjørn Viem Ness, Tariq Kurd.
 
 == Introduction
 
-Zilsp is an RV32-only extension, which adds load and store instructions using register pairs. I does so by reusing existing instruction encodings which are RV64-only.
+Zilsd is an RV32-only extension, which adds load and store instructions using register pairs. I does so by reusing existing instruction encodings which are RV64-only.
 
 Load and store instructions will use the same definition of even-odd pairs as layed out in Zdinx.
 
 The extension improves static code density, by replacing two separate load or store instructions with a single one. In addition, it can provide a performance improvement for implementations that can make use of a wider than XLEN memory interface.
 
-include::zilsp.adoc[]
+include::zilsd.adoc[]
