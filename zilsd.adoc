@@ -34,9 +34,9 @@ These instructions are mutually exclusive with Zcf.
 
 === Use of x0 as operand
 
-LD and C.LD instructions with destination `x0` are processed as any other load, but the result is discarded entirely. Specifically, a load pair to `x0` does not cause `x1` to be written. For C.LDSP, usage of `x0` as the destination is reserved.
+LD instructions with destination `x0` are processed as any other load, but the result is discarded entirely. Specifically, a load pair to `x0` does not cause `x1` to be written. For C.LDSP, usage of `x0` as the destination is reserved.
 
-When using `x0` as `src` of SD, C.SD, or C.SDSP, the entire 64-bit operand is zero — i.e., register `x1` is not accessed.
+When using `x0` as `src` of SD or C.SDSP, the entire 64-bit operand is zero — i.e., register `x1` is not accessed.
 
 === Fault Handling
 
