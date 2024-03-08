@@ -21,7 +21,7 @@ Implementations may need to crack these instructions, and perform to memory oper
 
 === Compressed Load/Store pair instructions
 
-If the C extension is present, Zilsd adds the following RV32-only instructions:
+If the C extension is present and F is not present, Zilsd adds the following RV32-only instructions:
 
   - C.LDSP loads stack-pointer relative 64-bit value into registers `rd'` and `rd'+1`. It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `ld rd, offset(x2)`. C.LDSP is only valid when _rd_&#x2260;x0; the code points with _rd_=x0 are reserved.
   - C.SDSP stores a stack-pointer relative 64-bit value from registers `rs2'` and `rs2'+1`. It computes an effective address by adding the _zero_-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `sd rs2, offset(x2)`.
