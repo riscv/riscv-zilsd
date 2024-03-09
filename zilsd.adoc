@@ -53,6 +53,6 @@ It is implementation defined whether interrupts can also be taken during the seq
 
 An implementation may have a requirement to issue a load/store pair instruction to non-idempotent memory.
 
-If the core implementation does not support Zilsd instructions to non-idempotent memories (e.g. if atomicity cannot be guaranteed), the core may use an idempotency PMA to detect it and take a load or store access fault exception in order to avoid unpredictable results.
+If the core implementation does not support Zilsd instructions to non-idempotent memories, the core may use an idempotency PMA to detect it and take a load or store access fault exception in order to avoid unpredictable results.
 
 Software should only use these instructions on non-idempotent memory regions when software can tolerate the required memory accesses being issued repeatedly in the case that they cause exceptions.
