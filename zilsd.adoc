@@ -51,6 +51,22 @@ If a trap occurs during the sequence then xEPC is updated with the PC of the ins
 It is implementation defined whether interrupts can also be taken during the sequence execution.
 ====
 
+=== Software view of the load/store pair sequence
+
+From a software perspective the load/store pair instructions appears as:
+
+* load instructions:
+** A sequence of one or more loads reading the bytes of the double word without updating rd or rd+1
+*** The bytes may be loaded in any order.
+*** The bytes may be grouped into larger accesses.
+*** Any of the bytes may be loaded multiple times.
+** An atomic write of the load result into rd and rd+1
+* store instructions:
+** A sequence of one or more stores writing the bytes of the double word
+*** The bytes may be stored in any order.
+*** The bytes may be grouped into larger accesses.
+*** Any of the bytes may be stored multiple times.
+
 === Non-idempotent memory handling
 
 An implementation may have a requirement to issue a load/store pair instruction to non-idempotent memory.
