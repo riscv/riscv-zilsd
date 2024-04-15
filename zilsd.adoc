@@ -16,7 +16,7 @@ The Zilsd extension adds the following RV32-only instructions:
 
 [NOTE]
 ====
-Implementations may need to crack these instructions, and perform to memory operations in sequence. Therefore, implementations are not required to ensure atomicity in loading/storing to/from the individual registers relating to a 64-bit operand.
+Implementations may need to crack these instructions, and perform to memory operations in sequence. Therefore, implementations are not required to ensure atomicity when storing to memory. Still, writing to the individual registers relating to a 64-bit operand of a load must happen atomically to ensure fault handling is possible.
 ====
 
 === Compressed Load/Store pair instructions
