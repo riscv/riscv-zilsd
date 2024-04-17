@@ -1,5 +1,5 @@
 [[chapter2]]
-== Load/Store pair instructions
+== Load/Store pair instructions (Zilsd)
 
 The Zilsd extension provides load/store pair instructions for RV32 analogous to the existing RV64 doubleword load/store instructions. The existing RV64 encodings are reused, which are reserved in RV32 without this extension.
 
@@ -19,9 +19,11 @@ The Zilsd extension adds the following RV32-only instructions:
 Implementations may need to crack these instructions, and perform to memory operations in sequence. Therefore, implementations are not required to ensure atomicity when storing to memory. Still, writing to the individual registers relating to a 64-bit operand of a load must happen atomically to ensure fault handling is possible.
 ====
 
-=== Compressed Load/Store pair instructions
+=== Compressed Load/Store pair instructions (Zcmlsd)
 
-If the C extension is present and F is not present, Zilsd adds the following RV32-only instructions:
+Zcmlsd depends on Zilsd and Zca. I has overlapping encodings with Zcf and is thus incompatible with Zcf. 
+
+Zcmlsd adds the following RV32-only instructions:
 
   - C.LDSP loads stack-pointer relative 64-bit value into registers `rd'` and `rd'+1`. It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `ld rd, offset(x2)`. C.LDSP is only valid when _rd_&#x2260;x0; the code points with _rd_=x0 are reserved.
   - C.SDSP stores a stack-pointer relative 64-bit value from registers `rs2'` and `rs2'+1`. It computes an effective address by adding the _zero_-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `sd rs2, offset(x2)`.
@@ -31,8 +33,6 @@ If the C extension is present and F is not present, Zilsd adds the following RV3
   - C.SD stores a 64-bit value from registers `rs2'` and `rs2'+1`.
   It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
   It expands to `sd rs2', offset(rs1')`.
-
-These instructions are mutually exclusive with Zcf.
 
 === Use of x0 as operand
 
