@@ -14,6 +14,9 @@ The Zilsd extension adds the following RV32-only instructions:
   - LD loads a 64-bit value into registers `rd` and `rd+1`
   - SD stores a 64-bit value from registers `rs2` and `rs2+1`
 
+include::images/wavedrom/load_store_pair.adoc[]
+[[load-store-pair,load and store pair]]
+
 [NOTE]
 ====
 As the access size is 64-bit, accesses are only considered naturally aligned for effective addresses that are a multiple of 8. In this case, these instruction are guaranteed to not raise an address-misaligned exception.
@@ -38,6 +41,9 @@ Zcmlsd adds the following RV32-only instructions:
   - C.SD stores a 64-bit value from registers `rs2'` and `rs2'+1`.
   It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
   It expands to `sd rs2', offset(rs1')`.
+
+include::images/wavedrom/c-load_store_pair.adoc[]
+[[c-load-store-pair,compressed load and store pair]]
 
 === Use of x0 as operand
 
