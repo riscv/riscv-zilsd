@@ -25,8 +25,8 @@ Zcmlsd depends on Zilsd and Zca. I has overlapping encodings with Zcf and is thu
 
 Zcmlsd adds the following RV32-only instructions:
 
-  - C.LDSP loads stack-pointer relative 64-bit value into registers `rd'` and `rd'+1`. It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `ld rd, offset(x2)`. C.LDSP is only valid when _rd_&#x2260;x0; the code points with _rd_=x0 are reserved.
-  - C.SDSP stores a stack-pointer relative 64-bit value from registers `rs2'` and `rs2'+1`. It computes an effective address by adding the _zero_-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `sd rs2, offset(x2)`.
+  - C.LDSP loads stack-pointer relative 64-bit value into registers `rd` and `rd+1`. It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `ld rd, offset(x2)`. C.LDSP is only valid when _rd_&#x2260;x0; the code points with _rd_=x0 are reserved.
+  - C.SDSP stores a stack-pointer relative 64-bit value from registers `rs2` and `rs2+1`. It computes an effective address by adding the _zero_-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `sd rs2, offset(x2)`.
   - C.LD loads a 64-bit value into registers `rd'` and `rd'+1`.
   It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
   It expands to `ld rd', offset(rs1')`.
