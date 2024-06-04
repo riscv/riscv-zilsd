@@ -46,7 +46,7 @@ Implementations may need to crack these instructions, and perform two memory ope
 [[zcmlsd, Zcmlsd]]
 === Compressed Load/Store pair instructions (Zcmlsd)
 
-Zcmlsd depends on Zilsd and Zca. It has overlapping encodings with Zcf and is thus incompatible with Zcf. 
+Zcmlsd depends on Zilsd and Zca. It has overlapping encodings with Zcf and is thus incompatible with Zcf.
 
 Zcmlsd adds the following RV32-only instructions:
 
