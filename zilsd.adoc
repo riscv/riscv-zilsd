@@ -136,11 +136,11 @@ Encoding (RV32)::
 [wavedrom, ,svg]
 ....
 {reg: [
-  {bits: 7,  name: 'opcode',    attr: ['7', 'LOAD'], type: 8},
-  {bits: 5,  name: 'rd', attr: ['5', 'dest, dest[0]=0'], type: 2},
-  {bits: 3,  name: 'funct3', attr: ['3', 'width=D'], type: 8},
-  {bits: 5,  name: 'rs1', attr: ['5', 'base'], type: 4},
-  {bits: 12, name: 'imm[11:0]', attr: ['12', 'offset[11:0]'], type: 3},
+  {bits: 7,  name: 0x3,    attr: ['LOAD'], type: 8},
+  {bits: 5,  name: 'rd', attr: ['dest, dest[0]=0'], type: 2},
+  {bits: 3,  name: 0x3, attr: ['width=D'], type: 8},
+  {bits: 5,  name: 'rs1', attr: ['base'], type: 4},
+  {bits: 12, name: 'imm[11:0]', attr: ['offset[11:0]'], type: 3},
 ]}
 ....
 
@@ -166,12 +166,12 @@ Encoding (RV32)::
 [wavedrom, ,svg]
 ....
 {reg: [
-  {bits: 7,  name: 'opcode',   attr: ['7', 'STORE'], type: 8},
-  {bits: 5,  name: 'imm[4:0]', attr: ['5', 'offset[4:0]'], type: 3},
-  {bits: 3,  name: 'funct3', attr: ['3', 'width=D'], type: 8},
-  {bits: 5,  name: 'rs1', attr: ['5', 'base'], type: 4},
-  {bits: 5,  name: 'rs2', attr: ['5', 'src, src[0]=0'], type: 4},
-  {bits: 7, name: 'imm[11:5]', attr: ['7', 'offset[11:5]'], type: 3},
+  {bits: 7,  name: 0x23,   attr: ['STORE'], type: 8},
+  {bits: 5,  name: 'imm[4:0]', attr: ['offset[4:0]'], type: 3},
+  {bits: 3,  name: 0x3, attr: ['width=D'], type: 8},
+  {bits: 5,  name: 'rs1', attr: ['base'], type: 4},
+  {bits: 5,  name: 'rs2', attr: ['src, src[0]=0'], type: 4},
+  {bits: 7,  name: 'imm[11:5]', attr: ['offset[11:5]'], type: 3},
 ]}
 ....
 
@@ -197,11 +197,11 @@ Encoding (RV32)::
 [wavedrom, ,svg]
 ....
 {reg: [
-  {bits: 2, name: 'op',     type: 8, attr: ['2','C2']},
-  {bits: 5, name: 'imm',    type: 3, attr: ['5','offset[4:3|8:6]']},
-  {bits: 5, name: 'rd',     type: 2, attr: ['5','dest≠0, dest[0]=0']},
-  {bits: 1, name: 'imm',    type: 3, attr: ['1','offset[5]']},
-  {bits: 3, name: 'funct3', type: 8, attr: ['3','C.LDSP']},
+  {bits: 2, name: 0x2,      type: 8, attr: ['C2']},
+  {bits: 5, name: 'imm',    type: 3, attr: ['offset[4:3|8:6]']},
+  {bits: 5, name: 'rd',     type: 2, attr: ['dest≠0, dest[0]=0']},
+  {bits: 1, name: 'imm',    type: 3, attr: ['offset[5]']},
+  {bits: 3, name: 0x3,      type: 8, attr: ['C.LDSP']},
 ], config: {bits: 16}}
 ....
 
@@ -225,10 +225,10 @@ Encoding (RV32)::
 [wavedrom, ,svg]
 ....
 {reg: [
-  {bits: 2, name: 'op',     type: 8, attr: ['2','C2']},
-  {bits: 5, name: 'rs2',    type: 4, attr: ['5','src, src[0]=0']},
-  {bits: 6, name: 'imm',    type: 3, attr: ['6','offset[5:3|8:6]']},
-  {bits: 3, name: 'funct3', type: 8, attr: ['3','C.SDSP']},
+  {bits: 2, name: 0x2,      type: 8, attr: ['C2']},
+  {bits: 5, name: 'rs2',    type: 4, attr: ['src, src[0]=0']},
+  {bits: 6, name: 'imm',    type: 3, attr: ['offset[5:3|8:6]']},
+  {bits: 3, name: 0x7,      type: 8, attr: ['C.SDSP']},
 ], config: {bits: 16}}
 ....
 
@@ -252,12 +252,12 @@ Encoding (RV32)::
 [wavedrom, ,svg]
 ....
 {reg: [
-  {bits: 2, name: 'op',      type: 8, attr: ['2', 'C0']},
-  {bits: 3, name: 'rd`',     type: 2, attr: ['3', 'dest, dest[0]=0']},
-  {bits: 2, name: 'imm',     type: 3, attr: ['2', 'offset[7:6]']},
-  {bits: 3, name: 'rs1`',    type: 4, attr: ['3', 'base']},
-  {bits: 3, name: 'imm',     type: 3, attr: ['3', 'offset[5:3]']},
-  {bits: 3, name: 'funct3',  type: 8, attr: ['3', 'C.LD']},
+  {bits: 2, name: 0x0,       type: 8, attr: ['C0']},
+  {bits: 3, name: 'rd`',     type: 2, attr: ['dest, dest[0]=0']},
+  {bits: 2, name: 'imm',     type: 3, attr: ['offset[7:6]']},
+  {bits: 3, name: 'rs1`',    type: 4, attr: ['base']},
+  {bits: 3, name: 'imm',     type: 3, attr: ['offset[5:3]']},
+  {bits: 3, name: 0x3,       type: 8, attr: ['C.LD']},
 ], config: {bits: 16}}
 ....
 
@@ -282,12 +282,12 @@ Encoding (RV32)::
 [wavedrom, ,svg]
 ....
 {reg: [
-  {bits: 2, name: 'op',     type: 8, attr: ['2', 'C0']},
-  {bits: 3, name: 'rs2`',   type: 4, attr: ['3', 'src, src[0]=0']},
-  {bits: 2, name: 'imm',    type: 3, attr: ['2', 'offset[7:6]']},
-  {bits: 3, name: 'rs1`',   type: 4, attr: ['3', 'base']},
-  {bits: 3, name: 'imm',    type: 3, attr: ['3', 'offset[5:3]']},
-  {bits: 3, name: 'funct3', type: 8, attr: ['3', 'C.SD']},
+  {bits: 2, name: 0x0,      type: 8, attr: ['C0']},
+  {bits: 3, name: 'rs2`',   type: 4, attr: ['src, src[0]=0']},
+  {bits: 2, name: 'imm',    type: 3, attr: ['offset[7:6]']},
+  {bits: 3, name: 'rs1`',   type: 4, attr: ['base']},
+  {bits: 3, name: 'imm',    type: 3, attr: ['offset[5:3]']},
+  {bits: 3, name: 0x7,      type: 8, attr: ['C.SD']},
 ], config: {bits: 16}}
 ....
 
