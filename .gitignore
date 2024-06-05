@@ -1,2 +1,3 @@
 *.pdf
-
+.asciidoctor
+*diag-wavedrom-md5*.svg
