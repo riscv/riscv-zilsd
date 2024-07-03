@@ -112,14 +112,6 @@ From a software perspective the load/store pair instructions appears as:
 *** The bytes may be grouped into larger accesses.
 *** Any of the bytes may be stored multiple times.
 
-=== Non-idempotent memory handling
-
-An implementation may have a requirement to issue a load/store pair instruction to non-idempotent memory.
-
-If an implementation of a hart does not support Zilsd instructions to non-idempotent memories, the hart may use an idempotency PMA to detect it and take a load or store access fault exception in order to avoid unpredictable results.
-
-Software should only use these instructions on non-idempotent memory regions when software can tolerate the required memory accesses being issued repeatedly in the case that they cause exceptions.
-
 <<<
 
 === Instructions
