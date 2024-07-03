@@ -1,7 +1,7 @@
 
 == Load/Store pair
 
-The Zilsd & Zcmlsd extensions provide load/store pair instructions for RV32 analogous to RV64 doubleword load/store instructions, reusing the existing RV64 encodings.
+The Zilsd & Zcmlsd extensions provide load/store pair instructions for RV32, reusing the existing RV64 doubleword load/store instruction encodings.
 
 Operands containing `src` for store instructions and `dest` for load instructions are held in aligned `x`-register pairs, i.e., register numbers must be even. Use of misaligned (odd-numbered) registers for these operands is _reserved_.
 
