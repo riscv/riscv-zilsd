@@ -23,12 +23,12 @@ The Zilsd extension adds the following RV32-only instructions:
 
 |yes
 |no
-|ld rd, simm(rs1)
+|ld rd, offset(rs1)
 |<<#insns-ld>>
 
 |yes
 |no
-|sd rs2, simm(rs1)
+|sd rs2, offset(rs1)
 |<<#insns-sd>>
 
 |===
@@ -59,22 +59,22 @@ Zcmlsd adds the following RV32-only instructions:
 
 |yes
 |no
-|c.ldsp rd, uimm(sp)
+|c.ldsp rd, offset(sp)
 |<<#insns-cldsp>>
 
 |yes
 |no
-|c.sdsp rs2, uimm(sp)
+|c.sdsp rs2, offset(sp)
 |<<#insns-csdsp>>
 
 |yes
 |no
-|c.ld rd', uimm(rs1')
+|c.ld rd', offset(rs1')
 |<<#insns-cld>>
 
 |yes
 |no
-|c.sd rs2', uimm(rs1')
+|c.sd rs2', offset(rs1')
 |<<#insns-csd>>
 
 |===
@@ -130,7 +130,7 @@ Synopsis::
 Load doubleword to even/odd register pair, 32-bit encoding
 
 Mnemonic::
-ld rd, simm(rs1)
+ld rd, offset(rs1)
 
 Encoding (RV32)::
 [wavedrom, ,svg]
@@ -160,7 +160,7 @@ Synopsis::
 Store doubleword from even/odd register pair, 32-bit encoding
 
 Mnemonic::
-sd rs2, simm(rs1)
+sd rs2, offset(rs1)
 
 Encoding (RV32)::
 [wavedrom, ,svg]
@@ -191,7 +191,7 @@ Synopsis::
 Stack-pointer based load doubleword to even/odd register pair, 16-bit encoding
 
 Mnemonic::
-c.ldsp rd, uimm(sp)
+c.ldsp rd, offset(sp)
 
 Encoding (RV32)::
 [wavedrom, ,svg]
@@ -219,7 +219,7 @@ Synopsis::
 Stack-pointer based store doubleword from even/odd register pair, 16-bit encoding
 
 Mnemonic::
-c.sdsp rs2, uimm(sp)
+c.sdsp rs2, offset(sp)
 
 Encoding (RV32)::
 [wavedrom, ,svg]
@@ -246,7 +246,7 @@ Synopsis::
 Load doubleword to even/odd register pair, 16-bit encoding
 
 Mnemonic::
-c.ld rd', uimm(rs1')
+c.ld rd', offset(rs1')
 
 Encoding (RV32)::
 [wavedrom, ,svg]
@@ -276,7 +276,7 @@ Synopsis::
 Store doubleword from even/odd register pair, 16-bit encoding
 
 Mnemonic::
-c.sd rs2', uimm(rs1')
+c.sd rs2', offset(rs1')
 
 Encoding (RV32)::
 [wavedrom, ,svg]
