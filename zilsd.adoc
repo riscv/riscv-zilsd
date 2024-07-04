@@ -1,7 +1,7 @@
 
 == Load/Store pair
 
-The Zilsd & Zcmlsd extensions provide load/store pair instructions for RV32, reusing the existing RV64 doubleword load/store instruction encodings.
+The Zilsd & Zclsd extensions provide load/store pair instructions for RV32, reusing the existing RV64 doubleword load/store instruction encodings.
 
 Operands containing `src` for store instructions and `dest` for load instructions are held in aligned `x`-register pairs, i.e., register numbers must be even. Use of misaligned (odd-numbered) registers for these operands is _reserved_.
 
@@ -43,12 +43,12 @@ As the access size is 64-bit, accesses are only considered naturally aligned for
 Implementations may need to crack these instructions, and perform two memory operations in sequence. Therefore, implementations are not required to ensure atomicity when storing to memory. However, writing to both registers written by a 64-bit load must happen atomically to ensure fault handling is possible.
 ====
 
-[[zcmlsd, Zcmlsd]]
-=== Compressed Load/Store pair instructions (Zcmlsd)
+[[zclsd, Zclsd]]
+=== Compressed Load/Store pair instructions (Zclsd)
 
-Zcmlsd depends on Zilsd and Zca. It has overlapping encodings with Zcf and is thus incompatible with Zcf.
+Zclsd depends on Zilsd and Zca. It has overlapping encodings with Zcf and is thus incompatible with Zcf.
 
-Zcmlsd adds the following RV32-only instructions:
+Zclsd adds the following RV32-only instructions:
 
 [%header,cols="^1,^1,4,8"]
 |===
@@ -198,7 +198,7 @@ Encoding (RV32)::
 Description:: 
 Loads stack-pointer relative 64-bit value into registers `rd'` and `rd'+1`. It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `ld rd, offset(x2)`. C.LDSP is only valid when _rd_&#x2260;x0; the code points with _rd_=x0 are reserved.
 
-Included in: <<zcmlsd>>
+Included in: <<zclsd>>
 
 <<<
 
@@ -225,7 +225,7 @@ Encoding (RV32)::
 Description:: 
 Stores a stack-pointer relative 64-bit value from registers `rs2'` and `rs2'+1`. It computes an effective address by adding the _zero_-extended offset, scaled by 8, to the stack pointer, `x2`. It expands to `sd rs2, offset(x2)`.
 
-Included in: <<zcmlsd>>
+Included in: <<zclsd>>
 
 <<<
 
@@ -255,7 +255,7 @@ Description::
 Loads a 64-bit value into registers `rd'` and `rd'+1`.
 It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
 
-Included in: <<zcmlsd>>
+Included in: <<zclsd>>
 
 <<<
 
@@ -286,4 +286,4 @@ Stores a 64-bit value from registers `rs2'` and `rs2'+1`.
 It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
 It expands to `sd rs2', offset(rs1')`.
 
-Included in: <<zcmlsd>>
+Included in: <<zclsd>>
