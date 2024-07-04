@@ -89,8 +89,6 @@ When using `x0` as `src` of SD or C.SDSP, the entire 64-bit operand is zero — 
 
 In implementations that crack Zilsd instructions for sequential execution, correct execution requires addressing idempotent memory, because the hart must be able to handle traps detected during the sequence. The entire sequence is re-executed after returning from the trap handler, and multiple traps are possible during the sequence.
 
-If a trap occurs during the sequence then xEPC is updated with the PC of the instruction, xTVAL (if not read-only-zero) updated with the bad address if it was an access fault and xCAUSE updated with the type of trap.
-
 [NOTE]
 ====
 It is implementation defined whether interrupts can also be taken during the sequence execution.
