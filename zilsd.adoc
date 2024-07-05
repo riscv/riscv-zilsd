@@ -119,7 +119,7 @@ From a software perspective load/store pair instructions appear as:
 *** If the effective address is 4B aligned:
 **** The bytes are grouped into word accesses.
 **** The words may be stored in any order.
-**** The words may be grouped into larger accesses.
+**** The words may be grouped into doublewords accesses.
 **** Any of the words may be stored multiple times.
 *** Else:
 **** The bytes may be stored in any order.
