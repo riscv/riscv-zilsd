@@ -33,12 +33,9 @@ The Zilsd extension adds the following RV32-only instructions:
 
 |===
 
-[NOTE]
-====
 As the access size is 64-bit, accesses are only considered naturally aligned for effective addresses that are a multiple of 8.
 In this case, these instruction are guaranteed to not raise an address-misaligned exception.
 Even if naturally aligned, the memory access might not be performed atomically.
-====
 
 If the effective address is a multiple of 4, then each word access is required to be performed atomically.
 The LD instruction must however write the loaded data to the pair of destination registers atomically to ensure fault handling is possible.
@@ -103,19 +100,31 @@ It is implementation defined whether interrupts can also be taken during the seq
 
 === Software view of the load/store pair sequence
 
-From a software perspective the load/store pair instructions appears as:
+From a software perspective load/store pair instructions appear as:
 
 * load instructions:
-** A sequence of one or more loads reading the bytes of the double word without updating rd or rd+1
-*** The bytes may be loaded in any order.
-*** The bytes may be grouped into larger accesses.
-*** Any of the bytes may be loaded multiple times.
+** A sequence of one or more loads reading the bytes of the doubleword without updating rd or rd+1
+*** If the effective address is 4B aligned:
+**** The bytes are grouped into word accesses.
+**** The words may be loaded in any order.
+**** The words may be grouped into doublewords accesses.
+**** Any of the words may be loaded multiple times.
+*** Else:
+**** The bytes may be loaded in any order.
+**** The bytes may be grouped into larger accesses.
+**** Any of the bytes may be loaded multiple times.
 ** An atomic write of the load result into rd and rd+1
 * store instructions:
-** A sequence of one or more stores writing the bytes of the double word
-*** The bytes may be stored in any order.
-*** The bytes may be grouped into larger accesses.
-*** Any of the bytes may be stored multiple times.
+** A sequence of one or more stores writing the bytes of the doubleword
+*** If the effective address is 4B aligned:
+**** The bytes are grouped into word accesses.
+**** The words may be stored in any order.
+**** The words may be grouped into larger accesses.
+**** Any of the words may be stored multiple times.
+*** Else:
+**** The bytes may be stored in any order.
+**** The bytes may be grouped into larger accesses.
+**** Any of the bytes may be stored multiple times.
 
 === Non-idempotent memory handling
 
