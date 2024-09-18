@@ -97,7 +97,6 @@ to two 4-byte memory operations.
 NOTE: This definition permits LD and SD instructions giving rise to exactly one
 memory access, regardless of alignment.
 It also permits decomposing instructions with 4-byte-aligned effective
-addresses into two operations, with no constraint on the order in which the
 These decomposed sequences are interruptible.
 Exceptions might occur on subsequent operations, making the effects of previous
 operations within the same instruction visible.
