@@ -87,42 +87,27 @@ LD instructions with destination `x0` are processed as any other load, but the r
 
 When using `x0` as `src` of SD or C.SDSP, the entire 64-bit operand is zero — i.e., register `x1` is not accessed.
 
-=== Fault Handling
+=== Exception Handling
 
-In implementations that crack Zilsd instructions for sequential execution, correct execution requires addressing idempotent memory, because the hart must be able to handle traps detected during the sequence. The entire sequence is re-executed after returning from the trap handler, and multiple traps are possible during the sequence.
+For the purposes of RVWMO and exception handling, LD and SD instructions are
+considered to be misaligned loads and stores, with one additional constraint:
+an LD or SD instruction whose effective address is a multiple of 4 gives rise
+to two 4-byte memory operations.
 
-[NOTE]
-====
-It is implementation defined whether interrupts can also be taken during the sequence execution.
-====
+NOTE: This definition permits LD and SD instructions giving rise to exactly one
+memory access, regardless of alignment.
+It also permits decomposing instructions with 4-byte-aligned effective
+addresses into two operations, with no constraint on the order in which the
+operations are performed.
+These decomposed sequences are interruptible.
+Exceptions might occur on subsequent operations, making the effects of previous
+operations within the same instruction visible.
 
-=== Software view of the load/store pair sequence
-
-From a software perspective load/store pair instructions appear as:
-
-* load instructions:
-** A sequence of one or more loads reading the bytes of the doubleword without updating rd or rd+1
-*** If the effective address is 4B aligned:
-**** The bytes are grouped into word accesses.
-**** The words may be loaded in any order.
-**** The words may be grouped into doublewords accesses.
-**** Any of the words may be loaded multiple times.
-*** Else:
-**** The bytes may be loaded in any order.
-**** The bytes may be grouped into larger accesses.
-**** Any of the bytes may be loaded multiple times.
-** An atomic write of the load result into rd and rd+1
-* store instructions:
-** A sequence of one or more stores writing the bytes of the doubleword
-*** If the effective address is 4B aligned:
-**** The bytes are grouped into word accesses.
-**** The words may be stored in any order.
-**** The words may be grouped into doublewords accesses.
-**** Any of the words may be stored multiple times.
-*** Else:
-**** The bytes may be stored in any order.
-**** The bytes may be grouped into larger accesses.
-**** Any of the bytes may be stored multiple times.
+NOTE: Software should make no assumptions about the number or order of
+accessses these instructions might give rise to, beyond the 4-byte constraint
+mentioned above.
+For example, an interrupted store might overwrite the same bytes upon return
+from the interrupt handler.
 
 <<<
 
