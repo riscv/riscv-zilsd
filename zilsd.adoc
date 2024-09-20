@@ -48,7 +48,7 @@ If an implementation performs a doubleword access atomically, the mentioned atom
 [[zclsd, Zclsd]]
 === Compressed Load/Store pair instructions (Zclsd)
 
-Zclsd depends on Zilsd and Zca. It has overlapping encodings with Zcf and is thus incompatible with Zcf.
+Zclsd depends on Zilsd and Zca. It has overlapping encodings with Zcf and is thus incompatible with Zcf, Zcmp, and Zcmt.
 
 Zclsd adds the following RV32-only instructions:
 
