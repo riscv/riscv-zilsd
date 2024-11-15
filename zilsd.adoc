@@ -41,7 +41,7 @@ If the effective address is a multiple of 4, then each word access is required t
 
 To ensure fault handling is possible for the load instructions, it must be ensured that the register which is the source of the base address is not overwritten before the entire operation is complete.
 This affects x2 for the stack pointer relative instruction and rs1 otherwise.
-To guarantee this, if one of the destination registers of the pair is the source register containing the base, it must not be written to before the other register is the pair has been written.
+To guarantee this, if one of the destination registers of the pair is the source register containing the base, it must not be written to before the other register in the pair has been written.
 
 [NOTE]
 ====
