@@ -104,7 +104,7 @@ Exceptions might occur on subsequent operations, making the effects of previous
 operations within the same instruction visible.
 
 NOTE: Software should make no assumptions about the number or order of
-accessses these instructions might give rise to, beyond the 4-byte constraint
+accesses these instructions might give rise to, beyond the 4-byte constraint
 mentioned above.
 For example, an interrupted store might overwrite the same bytes upon return
 from the interrupt handler.
