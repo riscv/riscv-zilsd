@@ -38,11 +38,17 @@ In this case, these instruction are guaranteed to not raise an address-misaligne
 Even if naturally aligned, the memory access might not be performed atomically.
 
 If the effective address is a multiple of 4, then each word access is required to be performed atomically.
-The LD instruction must however write the loaded data to the pair of destination registers atomically to ensure fault handling is possible.
+
+To ensure fault handling is possible for the load instructions, it must be ensured that the register which is the source of the base address is not overwritten before the entire operation is complete.
+This affects x2 for the stack pointer relative instruction and rs1 otherwise.
+To guarantee this, if one of the destination registers of the pair is the source register containing the base, it must not be written to before the other register in the pair has been written.
 
 [NOTE]
 ====
-If an implementation performs a doubleword access atomically, the mentioned atomicity requirements are inherently fulfilled.
+If an implementation performs a doubleword load access atomically and the register file implements writeback for even/odd register pairs,
+the mentioned atomicity requirements are inherently fulfilled.
+Otherwise, an implementation either needs to delay the writeback until the write can be performed atomically,
+or order sequential writes to the registers to ensure the requirement above is satisfied.
 ====
 
 [[zclsd, Zclsd]]
