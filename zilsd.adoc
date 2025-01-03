@@ -39,6 +39,15 @@ Even if naturally aligned, the memory access might not be performed atomically.
 
 If the effective address is a multiple of 4, then each word access is required to be performed atomically.
 
+The following table summarizes the required behavior:
+
+|===
+|Alignment |Guaranteed atomic? |Can cause misaligned trap?
+|8B |Each word access is atomic |no
+|4B |Each word access is atomic |yes
+|else |no | yes
+|===
+
 To ensure exception handling is possible for the load instructions, if a trap is taken, the base register must have its original value, while the other register in the pair can have been updated.
 This affects x2 for the stack pointer relative instruction and rs1 otherwise.
 
