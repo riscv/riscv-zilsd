@@ -42,13 +42,13 @@ If the effective address is a multiple of 4, then each word access is required t
 The following table summarizes the required behavior:
 
 |===
-|Alignment |Guaranteed atomic? |Can cause misaligned trap?
-|8B |Each word access is atomic |no
-|4B |Each word access is atomic |yes
+|Largest alignment |Word accesses guaranteed atomic? |Can cause misaligned trap?
+|8B |yes |no
+|4B |yes |yes
 |else |no | yes
 |===
 
-To ensure exception handling is possible for the load instructions, if a trap is taken, the base register must have its original value, while the other register in the pair can have been updated.
+To ensure resumable trap handling is possible for the load instructions, if a trap is taken, the base register must have its original value, while the other register in the pair can have been updated.
 This affects x2 for the stack pointer relative instruction and rs1 otherwise.
 
 [NOTE]
@@ -97,8 +97,7 @@ Zclsd adds the following RV32-only instructions:
 
 === Use of x0 as operand
 
-LD and C.LD instructions with destination `x0` are processed as any other load, but the result is discarded entirely.
-Specifically, a load pair to `x0` does not cause `x1` to be written.
+LD and C.LD instructions with destination `x0` are processed as any other load, but the result is discarded entirely and x1 is not written.
 For C.LDSP, usage of `x0` as the destination is reserved.
 
 When using `x0` as `src` of SD, C.SD or C.SDSP, the entire 64-bit operand is zero — i.e., register `x1` is not accessed.
