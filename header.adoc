@@ -2,9 +2,9 @@
 = Load/Store Pair for RV32 (Zilsd & Zclsd)
 :description: Load/Store Pair (LSP) instructions
 :company: RISC-V.org
-:revdate: 11/2024
-:revnumber: 1.0.0-rc1
-:revremark: This document is in Frozen state. See http://riscv.org/spec-state for details.
+:revdate: 02/2025
+:revnumber: 1.0
+:revremark: Ratified
 :url-riscv: http://riscv.org
 :doctype: book
 :preface-title: Preamble
